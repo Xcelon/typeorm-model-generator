@@ -193,6 +193,9 @@ export function modelGenerationPhase(
     databaseModel.forEach(element => {
         let casedFileName = "";
         switch (generationOptions.convertCaseFile) {
+            case "snake":
+                casedFileName = changeCase.snakeCase(element.tsEntityName);
+                break;
             case "camel":
                 casedFileName = changeCase.camelCase(element.tsEntityName);
                 break;
@@ -220,6 +223,9 @@ function createHandlebarsHelpers(generationOptions: IGenerationOptions) {
     Handlebars.registerHelper("toEntityName", str => {
         let retStr = "";
         switch (generationOptions.convertCaseEntity) {
+            case "snake":
+                retStr = changeCase.snakeCase(str);
+                break;
             case "camel":
                 retStr = changeCase.camelCase(str);
                 break;
@@ -238,6 +244,9 @@ function createHandlebarsHelpers(generationOptions: IGenerationOptions) {
     Handlebars.registerHelper("toFileName", str => {
         let retStr = "";
         switch (generationOptions.convertCaseFile) {
+            case "snake":
+                retStr = changeCase.snakeCase(str);
+                break;
             case "camel":
                 retStr = changeCase.camelCase(str);
                 break;
@@ -261,6 +270,9 @@ function createHandlebarsHelpers(generationOptions: IGenerationOptions) {
     Handlebars.registerHelper("toPropertyName", str => {
         let retStr = "";
         switch (generationOptions.convertCaseProperty) {
+            case "snake":
+                retStr = changeCase.snakeCase(str);
+                break;
             case "camel":
                 retStr = changeCase.camelCase(str);
                 break;
